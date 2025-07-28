@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca6gbeglxfcn5"]
+
+[ext_resource type="Script" path="res://GameLoop/SFX/SoundHandler.gd" id="1_jrmoa"]
+
+[node name="SoundHandler" type="Node"]
+script = ExtResource("1_jrmoa")

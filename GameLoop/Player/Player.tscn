@@ -1,0 +1,45 @@
+[gd_scene load_steps=11 format=3 uid="uid://d4mt7u5t3vnve"]
+
+[ext_resource type="Script" path="res://GameLoop/Player/Player.gd" id="1_44sth"]
+[ext_resource type="Resource" uid="uid://c80q7ugyb0k32" path="res://GameLoop/Player/Attributes/Damage.tres" id="2_aq8q3"]
+[ext_resource type="Texture2D" uid="uid://b3koaa1kmetqd" path="res://Assets/Ship.png" id="2_c3kta"]
+[ext_resource type="Resource" uid="uid://dja2osw7dbswf" path="res://GameLoop/Player/Attributes/Penetration.tres" id="3_qw5b8"]
+[ext_resource type="Resource" uid="uid://byhsl2vt6jsto" path="res://GameLoop/Player/Attributes/Firerate.tres" id="4_gmq7j"]
+[ext_resource type="Resource" uid="uid://7dtdcj2v6il3" path="res://GameLoop/Player/Attributes/Projectiles.tres" id="5_dgk4a"]
+[ext_resource type="PackedScene" uid="uid://clii7jrd61u3l" path="res://GameLoop/Projectile/ProjectileManager.tscn" id="7_0nlli"]
+[ext_resource type="PackedScene" uid="uid://ca6gbeglxfcn5" path="res://GameLoop/SFX/SoundHandler.tscn" id="8_00vjm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfwx0"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gvle"]
+size = Vector2(48, 40)
+
+[node name="Player" type="Area2D" node_paths=PackedStringArray("PlayerProjectileManager", "PlayerSoundHandler")]
+script = ExtResource("1_44sth")
+PlayerProjectileManager = NodePath("ProjectileManager")
+PlayerSoundHandler = NodePath("SoundHandler")
+Attributes = Array[Resource("res://GameLoop/Player/Attributes/Attribute.gd")]([ExtResource("2_aq8q3"), ExtResource("3_qw5b8"), ExtResource("4_gmq7j"), ExtResource("5_dgk4a")])
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_c3kta")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_gfwx0")
+debug_color = Color(1, 0.67451, 0.0509804, 0.733333)
+
+[node name="ScrapCatcher" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, 8)
+collision_layer = 2
+collision_mask = 0
+
+[node name="Collider" type="CollisionShape2D" parent="ScrapCatcher"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_7gvle")
+debug_color = Color(0, 0.105882, 0.305882, 0.419608)
+
+[node name="ProjectileManager" parent="." instance=ExtResource("7_0nlli")]
+
+[node name="SoundHandler" parent="." instance=ExtResource("8_00vjm")]

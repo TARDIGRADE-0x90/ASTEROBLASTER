@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxj5ofrloe8to"]
+
+[ext_resource type="PackedScene" path="res://GUI/UI_Controller/UI_Controller.tscn" id="1_8ln2f"]
+[ext_resource type="PackedScene" uid="uid://b6re03qepgedf" path="res://GUI/PauseMenu/PauseMenu.tscn" id="2_5jd41"]
+
+[node name="PauseMenuTest" type="Node"]
+
+[node name="UI_Controller" parent="." instance=ExtResource("1_8ln2f")]
+
+[node name="PauseMenu" parent="UI_Controller" instance=ExtResource("2_5jd41")]
+layout_mode = 1

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://by4scub8v5pa8"]
+
+[ext_resource type="Script" path="res://GameLoop/Enemy/EnemyData/EnemyData.gd" id="1_8cax3"]
+
+[resource]
+script = ExtResource("1_8cax3")
+EnemyKey = 0
+ShipColor = Color(0.9, 0.4, 0.2, 1)
+FloatSpeed = Vector2(0, 1)
+Health = 10
+Armor = 2
+HealthFactor = 3.0
+SpawnFactor = 0.05
+SpawnRate = 2.5
+MinimumSpawnRate = 0.15
+TriggerTime = 0
+DebrisMin = 3
+DebrisMax = 6
+Collidable = true
+Damagable = true
+Active = false

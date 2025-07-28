@@ -1,0 +1,39 @@
+MENU PLANNING
+
+-> : Transition by UI selection (if menu inactive, transition by Esc permissable)
+<- : Transition by either Esc or specific UI selection
+
+Actions: 
+Esc - Exit menu (if not at root menu) / Pause (if at menu root and unpaused) and Unpause (if at menu root and paused)
+Arrows - Cycle selection
+Enter - Confirm selection
+
+1 - GAME_STATES.MAIN_MENU
+
+MainMenuState
+>BufferMenu (i)
+>MainMenu (ii)
+>OptionsMenu (iii)
+
+(i) -> (ii) -> (iii)
+(ii) <- (iii)
+
+2 - GAME_STATES.GAME_LOOP
+
+2a.
+GameLoopState
+>PauseMenu (i)
+>PauseOptionsMenu (ii)
+
+X -> (i) -> (ii)
+X <- (i) <- (ii)
+
+2b.
+GameLoopState
+>PauseMenu (i)
+>PauseOptionsMenu (ii)
+>UpgradeMenu (iii)
+
+(iii) -> X
+X -> (i) -> (ii)
+X <- (i) <- (ii)

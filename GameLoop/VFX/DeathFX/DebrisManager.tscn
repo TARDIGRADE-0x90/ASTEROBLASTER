@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://das1y0ubi118t"]
+
+[ext_resource type="Script" path="res://GameLoop/VFX/DeathFX/DebrisManager.gd" id="1_6q3vh"]
+[ext_resource type="PackedScene" uid="uid://cvwcykec8jfg0" path="res://Utility/Poolable.tscn" id="2_swgvx"]
+
+[node name="DebrisManager" type="Node2D" node_paths=PackedStringArray("VFXPoolable")]
+script = ExtResource("1_6q3vh")
+VFXPoolable = NodePath("Poolable")
+
+[node name="Lifetime" type="Timer" parent="."]
+one_shot = true
+
+[node name="Poolable" parent="." instance=ExtResource("2_swgvx")]

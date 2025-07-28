@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://bg1h023wvd2ht"]
+
+[ext_resource type="Script" path="res://GameLoop/Enemy/Enemies/Chariot/Chariot.gd" id="1_gvnxn"]
+[ext_resource type="Resource" path="res://GameLoop/Enemy/EnemyData/Chariot.tres" id="2_kqp1e"]
+[ext_resource type="Shape2D" uid="uid://h2c6t6j13iac" path="res://GameLoop/Enemy/EnemyData/EnemyCollisionData/EnemyCollider.tres" id="3_umdm1"]
+[ext_resource type="Texture2D" uid="uid://duqt2fue75153" path="res://Assets/Enemies/Chariot.png" id="4_mwhu5"]
+[ext_resource type="LabelSettings" uid="uid://brxp37r0erf1p" path="res://GameLoop/Enemy/EnemyData/EnemyLabelData/HostileText.tres" id="5_pv1sq"]
+[ext_resource type="PackedScene" uid="uid://5iqlvpbhuc5m" path="res://GameLoop/VFX/HitFX/DamagePainter.tscn" id="6_c55yd"]
+[ext_resource type="PackedScene" uid="uid://cvwcykec8jfg0" path="res://Utility/Poolable.tscn" id="7_5k5st"]
+[ext_resource type="PackedScene" uid="uid://ca6gbeglxfcn5" path="res://GameLoop/SFX/SoundHandler.tscn" id="8_e6bb0"]
+
+[node name="Chariot" type="Area2D" node_paths=PackedStringArray("EnemyPoolable", "EnemySoundHandler", "EnemyDamageColor")]
+script = ExtResource("1_gvnxn")
+EnemyPoolable = NodePath("Poolable")
+EnemySoundHandler = NodePath("SoundHandler")
+EnemyDamageColor = NodePath("DamagePainter")
+Data = ExtResource("2_kqp1e")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = ExtResource("3_umdm1")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("4_mwhu5")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = ExtResource("5_pv1sq")
+horizontal_alignment = 1
+
+[node name="DamagePainter" parent="." instance=ExtResource("6_c55yd")]
+
+[node name="Poolable" parent="." instance=ExtResource("7_5k5st")]
+Active = true
+
+[node name="SoundHandler" parent="." instance=ExtResource("8_e6bb0")]

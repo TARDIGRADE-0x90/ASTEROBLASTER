@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://svmyiw1vhfrx"]
+
+[ext_resource type="Script" path="res://GameLoop/Application/Application.gd" id="1_j8hj0"]
+
+[node name="Application" type="Node"]
+script = ExtResource("1_j8hj0")

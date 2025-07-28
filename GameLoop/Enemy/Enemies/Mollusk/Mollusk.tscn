@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://dlrxcc4qtdr0v"]
+
+[ext_resource type="Script" path="res://GameLoop/Enemy/Enemies/Mollusk/Mollusk.gd" id="1_rcrt3"]
+[ext_resource type="Resource" path="res://GameLoop/Enemy/EnemyData/Mollusk.tres" id="2_peh1l"]
+[ext_resource type="Texture2D" uid="uid://dd68m24e1vx3j" path="res://Assets/Enemies/Mollusk.png" id="3_jclvd"]
+[ext_resource type="Shape2D" uid="uid://h2c6t6j13iac" path="res://GameLoop/Enemy/EnemyData/EnemyCollisionData/EnemyCollider.tres" id="3_upubu"]
+[ext_resource type="LabelSettings" uid="uid://brxp37r0erf1p" path="res://GameLoop/Enemy/EnemyData/EnemyLabelData/HostileText.tres" id="5_y86t5"]
+[ext_resource type="PackedScene" uid="uid://5iqlvpbhuc5m" path="res://GameLoop/VFX/HitFX/DamagePainter.tscn" id="6_yilf1"]
+[ext_resource type="PackedScene" uid="uid://cvwcykec8jfg0" path="res://Utility/Poolable.tscn" id="7_bfy3q"]
+[ext_resource type="PackedScene" uid="uid://ca6gbeglxfcn5" path="res://GameLoop/SFX/SoundHandler.tscn" id="8_kyyxr"]
+
+[node name="Mollusk" type="Area2D" node_paths=PackedStringArray("EnemyPoolable", "EnemySoundHandler", "EnemyDamageColor")]
+script = ExtResource("1_rcrt3")
+EnemyPoolable = NodePath("Poolable")
+EnemySoundHandler = NodePath("SoundHandler")
+EnemyDamageColor = NodePath("DamagePainter")
+Data = ExtResource("2_peh1l")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = ExtResource("3_upubu")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_jclvd")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = ExtResource("5_y86t5")
+horizontal_alignment = 1
+
+[node name="DamagePainter" parent="." instance=ExtResource("6_yilf1")]
+
+[node name="Poolable" parent="." instance=ExtResource("7_bfy3q")]
+Active = true
+
+[node name="SoundHandler" parent="." instance=ExtResource("8_kyyxr")]

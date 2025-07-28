@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceha6trk1k23k"]
+
+[ext_resource type="PackedScene" uid="uid://ckx6lomu3vfde" path="res://GUI/UI_Controller/UI_Controller.tscn" id="2_mcydu"]
+[ext_resource type="PackedScene" uid="uid://clrn6q3tvnunc" path="res://GUI/BufferMenu/BufferMenu.tscn" id="3_cma0b"]
+[ext_resource type="PackedScene" uid="uid://qn1il52hdi3d" path="res://GUI/MainMenu/MainMenu.tscn" id="4_hpvwx"]
+[ext_resource type="PackedScene" uid="uid://bpv75jyqmgqwq" path="res://GUI/OptionsMenu/OptionsMenu.tscn" id="5_bgbvo"]
+
+[node name="StartScreen" type="Node"]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="UI_Controller" parent="GUI" instance=ExtResource("2_mcydu")]
+
+[node name="BufferMenu" parent="GUI/UI_Controller" instance=ExtResource("3_cma0b")]
+
+[node name="MainMenu" parent="GUI/UI_Controller" instance=ExtResource("4_hpvwx")]
+visible = false
+
+[node name="OptionsMenu" parent="GUI/UI_Controller" instance=ExtResource("5_bgbvo")]
+visible = false

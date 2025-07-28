@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpvc4g1cwnh65"]
+
+[ext_resource type="Script" path="res://GameLoop/Enemy/Enemies/Wing/Wing.gd" id="1_cfucc"]
+[ext_resource type="Resource" path="res://GameLoop/Enemy/EnemyData/Wing.tres" id="2_rgo4e"]
+[ext_resource type="Shape2D" uid="uid://h2c6t6j13iac" path="res://GameLoop/Enemy/EnemyData/EnemyCollisionData/EnemyCollider.tres" id="3_qaccs"]
+[ext_resource type="Texture2D" uid="uid://btvy3g3u046bc" path="res://Assets/Enemies/Wing.png" id="4_6qesm"]
+[ext_resource type="LabelSettings" uid="uid://brxp37r0erf1p" path="res://GameLoop/Enemy/EnemyData/EnemyLabelData/HostileText.tres" id="5_117bi"]
+[ext_resource type="PackedScene" uid="uid://clii7jrd61u3l" path="res://GameLoop/Projectile/ProjectileManager.tscn" id="6_ih6sv"]
+[ext_resource type="PackedScene" uid="uid://5iqlvpbhuc5m" path="res://GameLoop/VFX/HitFX/DamagePainter.tscn" id="7_jfm1b"]
+[ext_resource type="PackedScene" uid="uid://cvwcykec8jfg0" path="res://Utility/Poolable.tscn" id="8_1sreh"]
+[ext_resource type="PackedScene" uid="uid://ca6gbeglxfcn5" path="res://GameLoop/SFX/SoundHandler.tscn" id="9_4uvfi"]
+
+[node name="Wing" type="Area2D" node_paths=PackedStringArray("EnemyPoolable", "EnemySoundHandler", "EnemyProjectileManager", "EnemyDamageColor")]
+script = ExtResource("1_cfucc")
+EnemyPoolable = NodePath("Poolable")
+EnemySoundHandler = NodePath("SoundHandler")
+EnemyProjectileManager = NodePath("ProjectileManager")
+EnemyDamageColor = NodePath("DamagePainter")
+Data = ExtResource("2_rgo4e")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = ExtResource("3_qaccs")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("4_6qesm")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = ExtResource("5_117bi")
+horizontal_alignment = 1
+
+[node name="ProjectileManager" parent="." instance=ExtResource("6_ih6sv")]
+
+[node name="DamagePainter" parent="." instance=ExtResource("7_jfm1b")]
+
+[node name="Poolable" parent="." instance=ExtResource("8_1sreh")]
+Active = true
+
+[node name="SoundHandler" parent="." instance=ExtResource("9_4uvfi")]

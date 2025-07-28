@@ -1,0 +1,275 @@
+[gd_scene load_steps=7 format=3 uid="uid://xn2pokl2bokb"]
+
+[ext_resource type="Script" path="res://GUI/UpgradeMenu/UpgradeMenu.gd" id="1_i36gx"]
+[ext_resource type="PackedScene" uid="uid://dntf3xtche2ul" path="res://GUI/MenuClasses/MenuTab.tscn" id="2_mnljs"]
+[ext_resource type="PackedScene" uid="uid://dchyprou0mf6c" path="res://GUI/UpgradeMenu/UpgradeButton.tscn" id="3_ud521"]
+[ext_resource type="Texture2D" uid="uid://c65i6b3o0e2pn" path="res://Assets/GUI/lower-arrow.png" id="4_fh16i"]
+[ext_resource type="Texture2D" uid="uid://destit7gm1vef" path="res://Assets/GUI/raise-arrow.png" id="5_kwq7l"]
+[ext_resource type="PackedScene" uid="uid://ca6gbeglxfcn5" path="res://GameLoop/SFX/SoundHandler.tscn" id="6_e4cxc"]
+
+[node name="UpgradeMenu" type="Control" node_paths=PackedStringArray("AttributeItems", "AttributeButtons", "AttributeLevels", "AttributeRanks", "AttributeValues", "AttributeProjectedValues", "MenuSoundHandler")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -125.0
+offset_right = 320.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i36gx")
+AttributeItems = NodePath("AttributeTab/Control/AttributeContainer/AttributeItems")
+AttributeButtons = NodePath("AttributeTab/Control/AttributeContainer/AttributeButtons")
+AttributeLevels = NodePath("AttributeTab/Control/AttributeContainer/AttributeLevel")
+AttributeRanks = NodePath("AttributeTab/Control/AttributeContainer/AttributeRank")
+AttributeValues = NodePath("AttributeTab/Control/AttributeContainer/AttributeValue")
+AttributeProjectedValues = NodePath("AttributeTab/Control/AttributeContainer/AttributeProjectedValue")
+MenuSoundHandler = NodePath("SoundHandler")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.152941, 0.819608, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="HeaderContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+
+[node name="ScrapHeader" type="Label" parent="HeaderContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Scrap Available: 21"
+horizontal_alignment = 1
+
+[node name="MultipleActive" type="Label" parent="HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Applying x 5"
+horizontal_alignment = 1
+
+[node name="AttributeTab" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+
+[node name="Control" type="Control" parent="AttributeTab"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 2
+mouse_filter = 1
+
+[node name="AttributeContainer" type="HBoxContainer" parent="AttributeTab/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -82.0
+offset_right = 290.5
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 75
+
+[node name="AttributeItems" type="VBoxContainer" parent="AttributeTab/Control/AttributeContainer"]
+layout_mode = 2
+focus_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="Damage" parent="AttributeTab/Control/AttributeContainer/AttributeItems" instance=ExtResource("2_mnljs")]
+layout_mode = 2
+
+[node name="Penetration" parent="AttributeTab/Control/AttributeContainer/AttributeItems" instance=ExtResource("2_mnljs")]
+layout_mode = 2
+
+[node name="Firerate" parent="AttributeTab/Control/AttributeContainer/AttributeItems" instance=ExtResource("2_mnljs")]
+layout_mode = 2
+
+[node name="Projectiles" parent="AttributeTab/Control/AttributeContainer/AttributeItems" instance=ExtResource("2_mnljs")]
+layout_mode = 2
+
+[node name="AttributeButtons" type="VBoxContainer" parent="AttributeTab/Control/AttributeContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="DamageButtons" type="HBoxContainer" parent="AttributeTab/Control/AttributeContainer/AttributeButtons"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="Lower" parent="AttributeTab/Control/AttributeContainer/AttributeButtons/DamageButtons" instance=ExtResource("3_ud521")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+button_texture = ExtResource("4_fh16i")
+
+[node name="Raise" parent="AttributeTab/Control/AttributeContainer/AttributeButtons/DamageButtons" instance=ExtResource("3_ud521")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+button_texture = ExtResource("5_kwq7l")
+
+[node name="PenetrationButtons" type="HBoxContainer" parent="AttributeTab/Control/AttributeContainer/AttributeButtons"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="Lower" parent="AttributeTab/Control/AttributeContainer/AttributeButtons/PenetrationButtons" instance=ExtResource("3_ud521")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+button_texture = ExtResource("4_fh16i")
+
+[node name="Raise" parent="AttributeTab/Control/AttributeContainer/AttributeButtons/PenetrationButtons" instance=ExtResource("3_ud521")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+button_texture = ExtResource("5_kwq7l")
+
+[node name="FirerateButtons" type="HBoxContainer" parent="AttributeTab/Control/AttributeContainer/AttributeButtons"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="Lower" parent="AttributeTab/Control/AttributeContainer/AttributeButtons/FirerateButtons" instance=ExtResource("3_ud521")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+button_texture = ExtResource("4_fh16i")
+
+[node name="Raise" parent="AttributeTab/Control/AttributeContainer/AttributeButtons/FirerateButtons" instance=ExtResource("3_ud521")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+button_texture = ExtResource("5_kwq7l")
+
+[node name="ProjectilesButtons" type="HBoxContainer" parent="AttributeTab/Control/AttributeContainer/AttributeButtons"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="Lower" parent="AttributeTab/Control/AttributeContainer/AttributeButtons/ProjectilesButtons" instance=ExtResource("3_ud521")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+button_texture = ExtResource("4_fh16i")
+
+[node name="Raise" parent="AttributeTab/Control/AttributeContainer/AttributeButtons/ProjectilesButtons" instance=ExtResource("3_ud521")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+button_texture = ExtResource("5_kwq7l")
+
+[node name="AttributeLevel" type="VBoxContainer" parent="AttributeTab/Control/AttributeContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="DamageLevel" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeLevel"]
+layout_mode = 2
+text = "Lvl. 0"
+
+[node name="PenetrationLevel" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeLevel"]
+layout_mode = 2
+text = "Lvl. 0"
+
+[node name="FirerateLevel" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeLevel"]
+layout_mode = 2
+text = "Lvl. 0"
+
+[node name="ProjectilesLevel" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeLevel"]
+layout_mode = 2
+text = "Lvl. 0"
+
+[node name="AttributeRank" type="VBoxContainer" parent="AttributeTab/Control/AttributeContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="DamageRank" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeRank"]
+layout_mode = 2
+text = "Rank V"
+
+[node name="PenetrationRank" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeRank"]
+layout_mode = 2
+text = "Rank V"
+
+[node name="FirerateRank" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeRank"]
+layout_mode = 2
+text = "Rank V"
+
+[node name="ProjectilesRank" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeRank"]
+layout_mode = 2
+text = "Rank V"
+
+[node name="AttributeValue" type="VBoxContainer" parent="AttributeTab/Control/AttributeContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="DamageValue" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeValue"]
+layout_mode = 2
+text = "Text"
+
+[node name="PenetrationValue" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeValue"]
+layout_mode = 2
+text = "Text"
+
+[node name="FirerateValue" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeValue"]
+layout_mode = 2
+text = "Text"
+
+[node name="ProjectilesValue" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeValue"]
+layout_mode = 2
+text = "Text"
+
+[node name="AttributeProjectedValue" type="VBoxContainer" parent="AttributeTab/Control/AttributeContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="DamageValue" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeProjectedValue"]
+layout_mode = 2
+text = "Text"
+
+[node name="PenetrationValue" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeProjectedValue"]
+layout_mode = 2
+text = "Text"
+
+[node name="FirerateValue" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeProjectedValue"]
+layout_mode = 2
+text = "Text"
+
+[node name="ProjectilesValue" type="Label" parent="AttributeTab/Control/AttributeContainer/AttributeProjectedValue"]
+layout_mode = 2
+text = "Text"
+
+[node name="SoundHandler" parent="." instance=ExtResource("6_e4cxc")]

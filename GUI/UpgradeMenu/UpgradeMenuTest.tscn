@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://rm5fs4wlxnr4"]
+
+[ext_resource type="PackedScene" uid="uid://ckx6lomu3vfde" path="res://GUI/UI_Controller/UI_Controller.tscn" id="1_3hiyr"]
+[ext_resource type="PackedScene" uid="uid://bdirctngyxt0j" path="res://GUI/UpgradeMenu/UpgradeMenu.tscn" id="2_h1b20"]
+
+[node name="UpgradeMenuTest" type="Node"]
+
+[node name="UI_Controller" parent="." instance=ExtResource("1_3hiyr")]
+
+[node name="UpgradeMenu" parent="UI_Controller" instance=ExtResource("2_h1b20")]

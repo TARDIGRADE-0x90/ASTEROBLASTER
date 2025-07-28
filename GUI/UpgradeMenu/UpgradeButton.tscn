@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dchyprou0mf6c"]
+
+[ext_resource type="Script" path="res://GUI/UpgradeMenu/UpgradeButton.gd" id="1_y2p0u"]
+[ext_resource type="Texture2D" uid="uid://c65i6b3o0e2pn" path="res://Assets/GUI/lower-arrow.png" id="2_lkcu4"]
+
+[sub_resource type="Animation" id="Animation_vaxq6"]
+resource_name = "pressed"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.482353, 0, 0.85098), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p7s3b"]
+_data = {
+"pressed": SubResource("Animation_vaxq6")
+}
+
+[node name="UpgradeButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_y2p0u")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_lkcu4")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p7s3b")
+}

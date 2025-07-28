@@ -1,0 +1,43 @@
+All applicable uses of Object Pooling:
+>projectiles
+>enemies (for each enemy type)
+
+How should Object Pooling be applied?
+
+Projectiles:
+Rather than queue_free, set physics_process and process to false and hide the projectile; when generating a new projectile, a new one gets added to the pool;
+
+when Firing, if a cleared item is in the pool, use that and mark it active; otherwise, make a new projectile and add it to the pool - when projectiles would otherwise be queue_freed, add them to pool (at the start or at the end, figure out yourself)
+
+(do later - measure FPS and record firerate + projectile stats at various values to assess when the FPS begins to seriously drop)
+
+---- Pre-pooling Test ----
+
+With timer on callback - Physics, and Projectiles: 15 and Firerate: 0.01
+
+FPS (Non-focused) - Mid 70s, can drop to 55 when hitting enemies
+FPS (Focused) - Single digits
+
+With timer on callback - Idle, same projectile data
+
+FPS (Non-focused) - 112-124, can drop to 95 when hitting enemies
+FPS (Focused) - 49-70
+
+---- Duct-taped and dogshit "Unused Projectile" array test ----
+
+With timer on callback - Physics, and Projectiles: 15 and Firerate: 0.01
+
+FPS (Non-focused) - 150-165, can drop to 120 when hitting enemies or moving around
+FPS (Focused) - 30-50, can drop to 10-20 when hitting enemies and moving around
+
+Timer on callback - Idle makes projectiles fail to sync with input at very low frames and is suboptimal (and actually suffered even higher frame drops on focus firing)
+
+---- "Unused Projectile" implementation with untoggling some Area2D options ----
+
+FPS is immaculate
+
+---- No pooling implementation; Projectiles: 20, Firerate: 0.01 ----
+
+FPS - 80-100 when moving and hitting enemies, no difference between focused and unfocused 
+
+POOLING IS FINISHED - Framerate doesn't drop below 100 even with 40 projectiles and firerate of 0.01

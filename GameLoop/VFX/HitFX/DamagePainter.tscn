@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://5iqlvpbhuc5m"]
+
+[ext_resource type="Script" path="res://GameLoop/VFX/HitFX/DamagePainter.gd" id="1_mllc3"]
+
+[node name="DamagePainter" type="Node"]
+script = ExtResource("1_mllc3")

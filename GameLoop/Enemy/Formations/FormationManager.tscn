@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwfhoomjtwel"]
+
+[ext_resource type="Script" path="res://GameLoop/Enemy/Formations/FormationManager.gd" id="1_0qa14"]
+
+[node name="FormationManager" type="Node" node_paths=PackedStringArray("FormationTimer", "EnemySelectionTimer", "StartDelay", "StopDelay")]
+script = ExtResource("1_0qa14")
+FormationTimer = NodePath("FormationTimer")
+EnemySelectionTimer = NodePath("EnemyTimer")
+StartDelay = NodePath("StartDelay")
+StopDelay = NodePath("StopDelay")
+
+[node name="FormationTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="StartDelay" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+
+[node name="StopDelay" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

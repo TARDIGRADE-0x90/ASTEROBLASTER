@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpv75jyqmgqwq"]
+
+[ext_resource type="Script" path="res://GUI/OptionsMenu/OptionsMenu.gd" id="1_kf7pt"]
+[ext_resource type="PackedScene" uid="uid://dntf3xtche2ul" path="res://GUI/MenuClasses/MenuTab.tscn" id="2_ihl75"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kf7pt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsSpace" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/OptionsSpace"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Header" type="Label" parent="MarginContainer/OptionsSpace"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_right = 31.0
+offset_bottom = 26.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Options"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/OptionsSpace"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="OptionsMenuItems" type="VBoxContainer" parent="MarginContainer/OptionsSpace/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Music" parent="MarginContainer/OptionsSpace/MarginContainer/OptionsMenuItems" instance=ExtResource("2_ihl75")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SFX" parent="MarginContainer/OptionsSpace/MarginContainer/OptionsMenuItems" instance=ExtResource("2_ihl75")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VFX" parent="MarginContainer/OptionsSpace/MarginContainer/OptionsMenuItems" instance=ExtResource("2_ihl75")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Return" parent="MarginContainer/OptionsSpace/MarginContainer/OptionsMenuItems" instance=ExtResource("2_ihl75")]
+layout_mode = 2
+size_flags_vertical = 3

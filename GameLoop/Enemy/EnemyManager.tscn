@@ -1,0 +1,18 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxipfhioqdgob"]
+
+[ext_resource type="Script" path="res://GameLoop/Enemy/EnemyManager.gd" id="1_21l8x"]
+[ext_resource type="Resource" uid="uid://by4scub8v5pa8" path="res://GameLoop/Enemy/EnemyData/Mollusk.tres" id="2_mg3vj"]
+[ext_resource type="Resource" uid="uid://qcd72e3cyxxh" path="res://GameLoop/Enemy/EnemyData/Chariot.tres" id="3_fx47a"]
+[ext_resource type="Resource" uid="uid://d0aifxyxq35vk" path="res://GameLoop/Enemy/EnemyData/Hornet.tres" id="4_d7o35"]
+[ext_resource type="Resource" uid="uid://vgjddgxasem3" path="res://GameLoop/Enemy/EnemyData/Wing.tres" id="5_214d6"]
+[ext_resource type="Resource" path="res://GameLoop/Enemy/EnemyData/Supply.tres" id="6_rv7rj"]
+[ext_resource type="PackedScene" uid="uid://bwfhoomjtwel" path="res://GameLoop/Enemy/Formations/FormationManager.tscn" id="7_bon5v"]
+
+[node name="EnemyManager" type="Node2D" node_paths=PackedStringArray("EnemyFormationManager")]
+script = ExtResource("1_21l8x")
+EnemySelection = Array[Resource("res://GameLoop/Enemy/EnemyData/EnemyData.gd")]([ExtResource("2_mg3vj"), ExtResource("3_fx47a"), ExtResource("4_d7o35"), ExtResource("5_214d6"), ExtResource("6_rv7rj")])
+EnemyFormationManager = NodePath("FormationManager")
+
+[node name="CurrentEnemies" type="Node" parent="."]
+
+[node name="FormationManager" parent="." instance=ExtResource("7_bon5v")]

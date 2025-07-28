@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ss17661jfynb"]
+
+[ext_resource type="Script" path="res://GameLoop/VFX/HitFX/HitRing.gd" id="1_qeiet"]
+[ext_resource type="PackedScene" uid="uid://cvwcykec8jfg0" path="res://Utility/Poolable.tscn" id="2_shc6w"]
+
+[node name="HitRing" type="Node2D" node_paths=PackedStringArray("VFXPoolable")]
+script = ExtResource("1_qeiet")
+VFXPoolable = NodePath("Poolable")
+
+[node name="Lifetime" type="Timer" parent="."]
+
+[node name="Poolable" parent="." instance=ExtResource("2_shc6w")]
+Active = true

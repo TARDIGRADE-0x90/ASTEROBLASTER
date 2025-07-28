@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://c80q7ugyb0k32"]
+
+[ext_resource type="Script" path="res://GameLoop/Player/Attributes/Attribute.gd" id="1_kkdm6"]
+
+[resource]
+script = ExtResource("1_kkdm6")
+Type = 0
+Level = 0
+Rank = 0
+LevelPerRank = 10
+MaxRank = 5
+Value = 1.0
+UpdateRate = 0.5

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://clii7jrd61u3l"]
+
+[ext_resource type="Script" path="res://GameLoop/Projectile/ProjectileManager.gd" id="1_h2nfy"]
+
+[node name="ProjectileManager" type="Node" node_paths=PackedStringArray("ShotTimer")]
+script = ExtResource("1_h2nfy")
+ShotTimer = NodePath("ShotTimer")
+
+[node name="ShotTimer" type="Timer" parent="."]
+process_callback = 0

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cprsuo8h05kg6"]
+
+[ext_resource type="Script" path="res://GameLoop/Scrap.gd" id="1_aw3o3"]
+[ext_resource type="Shape2D" uid="uid://h2c6t6j13iac" path="res://GameLoop/Enemy/EnemyData/EnemyCollisionData/EnemyCollider.tres" id="2_qot8l"]
+[ext_resource type="Texture2D" uid="uid://gff0duayiymu" path="res://Assets/dmg_up.png" id="3_mmr10"]
+
+[node name="Scrap" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_aw3o3")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_qot8l")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0.768627, 0.419608, 0.0156863, 1)
+texture = ExtResource("3_mmr10")

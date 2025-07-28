@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgosefuqbou13"]
+
+[ext_resource type="Script" path="res://GameLoop/VFX/DeathFX/Ripple.gd" id="1_5e08s"]
+[ext_resource type="PackedScene" uid="uid://cvwcykec8jfg0" path="res://Utility/Poolable.tscn" id="2_phlrs"]
+
+[node name="Ripple" type="Node2D" node_paths=PackedStringArray("VFXPoolable")]
+script = ExtResource("1_5e08s")
+VFXPoolable = NodePath("Poolable")
+
+[node name="Lifetime" type="Timer" parent="."]
+
+[node name="Echo" type="Timer" parent="."]
+
+[node name="Poolable" parent="." instance=ExtResource("2_phlrs")]
+Active = true

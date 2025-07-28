@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://qcd72e3cyxxh"]
+
+[ext_resource type="Script" path="res://GameLoop/Enemy/EnemyData/EnemyData.gd" id="1_alhor"]
+
+[resource]
+script = ExtResource("1_alhor")
+EnemyKey = 1
+ShipColor = Color(1, 0.8, 0, 1)
+FloatSpeed = Vector2(0, 2)
+Health = 5
+Armor = 1
+HealthFactor = 2.5
+SpawnFactor = 0.1
+SpawnRate = 6.0
+MinimumSpawnRate = 0.3
+TriggerTime = 23
+DebrisMin = 2
+DebrisMax = 4
+Collidable = true
+Damagable = true
+Active = false

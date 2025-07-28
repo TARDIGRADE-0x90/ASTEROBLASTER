@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://qn1il52hdi3d"]
+
+[ext_resource type="Script" path="res://GUI/MainMenu/MainMenu.gd" id="1_xynwh"]
+[ext_resource type="PackedScene" uid="uid://dntf3xtche2ul" path="res://GUI/MenuClasses/MenuTab.tscn" id="2_3e03u"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xynwh")
+
+[node name="MainMenuArea" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GameTitle" type="Label" parent="MainMenuArea"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "ASTEROBLASTER"
+horizontal_alignment = 1
+
+[node name="MenuSelection" type="Control" parent="MainMenuArea"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MenuSelectionPanel" type="MarginContainer" parent="MainMenuArea/MenuSelection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -132.0
+offset_right = 320.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="MainMenuItems" type="VBoxContainer" parent="MainMenuArea/MenuSelection/MenuSelectionPanel"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Start" parent="MainMenuArea/MenuSelection/MenuSelectionPanel/MainMenuItems" instance=ExtResource("2_3e03u")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Options" parent="MainMenuArea/MenuSelection/MenuSelectionPanel/MainMenuItems" instance=ExtResource("2_3e03u")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Exit" parent="MainMenuArea/MenuSelection/MenuSelectionPanel/MainMenuItems" instance=ExtResource("2_3e03u")]
+layout_mode = 2
+size_flags_vertical = 3

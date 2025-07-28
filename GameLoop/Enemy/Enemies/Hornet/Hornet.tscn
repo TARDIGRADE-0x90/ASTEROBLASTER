@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3nk1skcu14rq"]
+
+[ext_resource type="Script" path="res://GameLoop/Enemy/Enemies/Hornet/Hornet.gd" id="1_k337w"]
+[ext_resource type="Resource" uid="uid://d0aifxyxq35vk" path="res://GameLoop/Enemy/EnemyData/Hornet.tres" id="2_gdjlj"]
+[ext_resource type="Shape2D" uid="uid://h2c6t6j13iac" path="res://GameLoop/Enemy/EnemyData/EnemyCollisionData/EnemyCollider.tres" id="3_jqaks"]
+[ext_resource type="Texture2D" uid="uid://dgie3bggkkwqw" path="res://Assets/Enemies/Hornet.png" id="4_0ld52"]
+[ext_resource type="LabelSettings" uid="uid://brxp37r0erf1p" path="res://GameLoop/Enemy/EnemyData/EnemyLabelData/HostileText.tres" id="5_48irq"]
+[ext_resource type="PackedScene" uid="uid://clii7jrd61u3l" path="res://GameLoop/Projectile/ProjectileManager.tscn" id="6_ctex8"]
+[ext_resource type="PackedScene" uid="uid://5iqlvpbhuc5m" path="res://GameLoop/VFX/HitFX/DamagePainter.tscn" id="7_efgdn"]
+[ext_resource type="PackedScene" uid="uid://cvwcykec8jfg0" path="res://Utility/Poolable.tscn" id="8_ycob2"]
+[ext_resource type="PackedScene" uid="uid://ca6gbeglxfcn5" path="res://GameLoop/SFX/SoundHandler.tscn" id="9_qipl7"]
+
+[node name="Hornet" type="Area2D" node_paths=PackedStringArray("EnemyPoolable", "EnemySoundHandler", "EnemyProjectileManager", "EnemyDamageColor")]
+script = ExtResource("1_k337w")
+EnemyPoolable = NodePath("Poolable")
+EnemySoundHandler = NodePath("SoundHandler")
+EnemyProjectileManager = NodePath("ProjectileManager")
+EnemyDamageColor = NodePath("DamagePainter")
+Data = ExtResource("2_gdjlj")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = ExtResource("3_jqaks")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("4_0ld52")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = ExtResource("5_48irq")
+horizontal_alignment = 1
+
+[node name="ProjectileManager" parent="." instance=ExtResource("6_ctex8")]
+
+[node name="DamagePainter" parent="." instance=ExtResource("7_efgdn")]
+
+[node name="Poolable" parent="." instance=ExtResource("8_ycob2")]
+Active = true
+
+[node name="SoundHandler" parent="." instance=ExtResource("9_qipl7")]

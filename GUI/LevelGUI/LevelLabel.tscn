@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce88iafqog7sp"]
+
+[ext_resource type="Script" path="res://GUI/LevelGUI/LevelLabel.gd" id="1_erdbk"]
+
+[node name="LevelLabel" type="Label" node_paths=PackedStringArray("LabelTimer")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_erdbk")
+LabelTimer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

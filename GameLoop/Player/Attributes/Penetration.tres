@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://dja2osw7dbswf"]
+
+[ext_resource type="Script" path="res://GameLoop/Player/Attributes/Attribute.gd" id="1_4jj6s"]
+
+[resource]
+script = ExtResource("1_4jj6s")
+Type = 1
+Level = 0
+Rank = 1
+LevelPerRank = 5
+MaxRank = 5
+Value = 1.0
+UpdateRate = 0.2

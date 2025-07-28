@@ -1,0 +1,91 @@
+
+Note:
+	note - Spawn Points:
+		Mollusk: 0
+		Supply: 0
+		Chariot: 24
+		Hornet: 35
+		Wing: 50
+	
+	await get_tree().process_frame may be VERY USEFUL, as it waits until next process frame before proceeding;
+	Waiting until next process frame may be necessary to properly emit subsequent signals
+	
+	Make game window Fullscreen Size, centered
+	
+	Turn highlighting into its own VFX component that can be added to things like UI, entities, etc.
+	
+	Randomly rotate where points begin on ripple death vfx
+	
+	Take all that redundant generation code and pool arrays and move them onto a distinct object pooling class
+	that handles that stuff; if there's any specific code (i.e, enemy_manager counting enemies),
+	figure out how to separate it - I want to implement a Flush method for pools that clears all entries
+	and be able to call it at certain points, such as scene reloads or after upgrade menus
+	
+	Make health labels above enemies flicker a bit upon taking damage
+
+Bug Fixing
+	- Pause Menu in main game loop ignores the first input for esc (upon subsequent main menu -> start game), 
+	likely due to duct taped shitty conditional code; resolve this as soon as possible
+	
+	- Enemies continue to fire after exiting the screen; likely a lack of proper pool hiding, investigate
+	
+	- Saw a player projectile randomly phase through an enemy as if it had unlimited penetration, investigate
+	
+	- ENEMY COUNT IS FUCKED UP AGAIN - Investigate how this interacts with formations
+		perhaps, as an additional safe measure, reset enemy count to 0 after every upgrade request as well?
+		(This should be fixed now - active formations have a boolean)
+		(THIS IS NOT FUCKING FIXED, INVESTIGATE ENEMY DEATHS IN ALL TYPES)
+	
+	- Projectile pooling is fucky, investigate
+
+Gameplay Loop
+	- Four states : Scattered; Formation; Miniboss; Boss 
+	- Scattered state, each enemy spawns according to their given timer at a random cell
+	- Formation state, enemies generate rapidly in organized formations, with the formations themselves having a timer
+	- Miniboss state, a miniboss spawns
+	- Boss state, a boss spawns
+	
+	ordering: scattered -> formation -> miniboss -> (scattered/formation) -> (scattered/formation) -> boss
+	for parenthesis, maybe just take a 2 item array and shuffle it so that it reads the indices
+	
+	- Since this is mildly influenced by Survivors-likes, focus on things that maximize synergy;
+		Have auxillary powers/weapons that are influenced by stats, have opportunities past the early stage of
+		the game to permanantly boost a random stat via drops or purchases
+	
+	- After all enemies have their timers unlocked, make it so that Formations of enemies begin to spawn;
+	Enemy Formations are arrangements of one or more types of enemies, and may generate within the bounds of the
+	enemy spawn cells. A formation is randomly chosen and has its own timer separate from other enemy timers; 
+	it is not affected by the time reduction that basic enemy spawning has, but instead is based on a predefined
+	range of integers.
+	
+	- Game has different Intensities (basically levels) that progress after every boss for each intensity is killed
+	Each intensity has a pool of random bosses that can spawn at the end of every 300 (or 400 idk) seconds
+	Thinking of 4 intensities for right now 
+
+GUI
+	- make it so that confirmed upgrades reflect new values on the upgrade menu
+	
+	- pause menu bug, stated earlier
+
+Later
+	- Interpolate cannon positions to the focus zone
+	
+	- Reminder for specializations
+		Damage: Plasma; Slug; Missile
+		Firerate: Laser; Beam; Stormshot
+		Penetration: Lance; Sabot; Armature
+		Projectile: Shrapnel; Flechette; Swarm
+	
+	- Make it so that the selected stat for specialization has a raised max for rank/level/value
+	
+	- Make the player ship more visually clear such that you can more readily assess its hitbox
+	
+	- Draw some kind of rail at the bottom that better signifies restriction to horizontal movement
+	
+	- When dealing with bosses or certain enemies that may fire multiple types of projectiles, just
+	use multiple ProjectileManagers per different bullet type; moreover, if you want them to sweep left/right
+	or in some other kind of direction, apply x and y offset variables to the shot data x and y on projectile
+	generation instead of directly modifying the resource
+
+Misc. Credits
+	https://danceswithcode.net/engineeringnotes/rotations_in_2d/rotations_in_2d.html - debris rotation

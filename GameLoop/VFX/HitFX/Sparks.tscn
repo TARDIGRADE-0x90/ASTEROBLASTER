@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://qikuxpg0e7ck"]
+
+[ext_resource type="Script" path="res://GameLoop/VFX/HitFX/Sparks.gd" id="1_i7mp0"]
+[ext_resource type="PackedScene" uid="uid://cvwcykec8jfg0" path="res://Utility/Poolable.tscn" id="2_vp2df"]
+
+[node name="Sparks" type="Node2D" node_paths=PackedStringArray("VFXPoolable")]
+script = ExtResource("1_i7mp0")
+VFXPoolable = NodePath("Poolable")
+
+[node name="Lifetime" type="Timer" parent="."]
+
+[node name="Poolable" parent="." instance=ExtResource("2_vp2df")]
+Active = true

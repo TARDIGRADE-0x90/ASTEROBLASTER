@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://sc1jrlcktov5"]
+
+[ext_resource type="Script" path="res://GUI/LevelGUI/LevelGUI.gd" id="1_05ui6"]
+[ext_resource type="PackedScene" uid="uid://ce88iafqog7sp" path="res://GUI/LevelGUI/LevelLabel.tscn" id="2_nuguw"]
+
+[node name="LevelGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_05ui6")
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelGUILabels" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 40
+
+[node name="TimeLabel" parent="LevelGUILabels" instance=ExtResource("2_nuguw")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "0"
+horizontal_alignment = 1
+
+[node name="HealthLabel" parent="LevelGUILabels" instance=ExtResource("2_nuguw")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "HEALTH:"
+LabelKey = 1
+
+[node name="ScrapLabel" parent="LevelGUILabels" instance=ExtResource("2_nuguw")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "0 SCRAP"
+horizontal_alignment = 2
+LabelKey = 2
+
+[node name="CooldownLabel" parent="LevelGUILabels" instance=ExtResource("2_nuguw")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "UPGRADE:
+READY"
+LabelKey = 3

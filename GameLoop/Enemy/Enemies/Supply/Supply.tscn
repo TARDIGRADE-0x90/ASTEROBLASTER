@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://drd8mb7p8jb5k"]
+
+[ext_resource type="Script" path="res://GameLoop/Enemy/Enemies/Supply/Supply.gd" id="1_bcujt"]
+[ext_resource type="Resource" path="res://GameLoop/Enemy/EnemyData/Supply.tres" id="2_emrh2"]
+[ext_resource type="Shape2D" uid="uid://h2c6t6j13iac" path="res://GameLoop/Enemy/EnemyData/EnemyCollisionData/EnemyCollider.tres" id="3_hjhu6"]
+[ext_resource type="Texture2D" uid="uid://dqj4u0ge4jxe0" path="res://Assets/Enemies/Supply.png" id="4_6dvpv"]
+[ext_resource type="LabelSettings" uid="uid://d01jenysv8wn8" path="res://GameLoop/Enemy/EnemyData/EnemyLabelData/SupplyText.tres" id="5_gulq4"]
+[ext_resource type="PackedScene" uid="uid://5iqlvpbhuc5m" path="res://GameLoop/VFX/HitFX/DamagePainter.tscn" id="6_uu42g"]
+[ext_resource type="PackedScene" uid="uid://cvwcykec8jfg0" path="res://Utility/Poolable.tscn" id="7_05x4w"]
+[ext_resource type="PackedScene" uid="uid://ca6gbeglxfcn5" path="res://GameLoop/SFX/SoundHandler.tscn" id="8_860o5"]
+
+[node name="Supply" type="Area2D" node_paths=PackedStringArray("EnemyPoolable", "EnemySoundHandler", "EnemyDamageColor")]
+script = ExtResource("1_bcujt")
+EnemyPoolable = NodePath("Poolable")
+EnemySoundHandler = NodePath("SoundHandler")
+EnemyDamageColor = NodePath("DamagePainter")
+Data = ExtResource("2_emrh2")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = ExtResource("3_hjhu6")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("4_6dvpv")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = ExtResource("5_gulq4")
+horizontal_alignment = 1
+
+[node name="DamagePainter" parent="." instance=ExtResource("6_uu42g")]
+
+[node name="Poolable" parent="." instance=ExtResource("7_05x4w")]
+Active = true
+
+[node name="SoundHandler" parent="." instance=ExtResource("8_860o5")]

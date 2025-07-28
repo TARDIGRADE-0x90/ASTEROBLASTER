@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://GameLoop/UpgradeCaravan/UpgradeCaravan.gd" id="1_ppytb"]
+[ext_resource type="Texture2D" uid="uid://c1en5v3dfl40c" path="res://Assets/upgrade-request.png" id="2_rhido"]
+
+[node name="UpgradeCaravan" type="Sprite2D"]
+texture = ExtResource("2_rhido")
+script = ExtResource("1_ppytb")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlbvvqsmbeirk"]
+
+[ext_resource type="Script" path="res://GameLoop/VFX/DeathFX/Burst.gd" id="1_qlw6s"]
+[ext_resource type="PackedScene" uid="uid://cvwcykec8jfg0" path="res://Utility/Poolable.tscn" id="2_rk1fy"]
+
+[node name="Burst" type="Node2D" node_paths=PackedStringArray("VFXPoolable")]
+script = ExtResource("1_qlw6s")
+VFXPoolable = NodePath("Poolable")
+
+[node name="Lifetime" type="Timer" parent="."]
+
+[node name="Poolable" parent="." instance=ExtResource("2_rk1fy")]
+Active = true

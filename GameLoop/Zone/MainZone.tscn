@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwm6j0uf82lls"]
+
+[ext_resource type="Script" path="res://GameLoop/Zone/Zone.gd" id="1_koyvp"]
+[ext_resource type="PackedScene" uid="uid://ckx6lomu3vfde" path="res://GUI/UI_Controller/UI_Controller.tscn" id="2_d7s1w"]
+[ext_resource type="PackedScene" uid="uid://b6re03qepgedf" path="res://GUI/PauseMenu/PauseMenu.tscn" id="3_yn537"]
+[ext_resource type="PackedScene" uid="uid://bxipfhioqdgob" path="res://GameLoop/Enemy/EnemyManager.tscn" id="4_45ahw"]
+[ext_resource type="Texture2D" uid="uid://0b4i3d5oofva" path="res://Assets/level_background.png" id="5_5o5c6"]
+[ext_resource type="PackedScene" uid="uid://ca6gbeglxfcn5" path="res://GameLoop/SFX/SoundHandler.tscn" id="7_mhtgk"]
+[ext_resource type="PackedScene" uid="uid://sc1jrlcktov5" path="res://GUI/LevelGUI/LevelGUI.tscn" id="11_pvfh0"]
+
+[node name="MainZone" type="Node" node_paths=PackedStringArray("ZoneSoundHandler")]
+script = ExtResource("1_koyvp")
+ZoneSoundHandler = NodePath("SoundHandler")
+
+[node name="FPSTest" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="UI_Controller" parent="." instance=ExtResource("2_d7s1w")]
+
+[node name="PauseMenu" parent="UI_Controller" instance=ExtResource("3_yn537")]
+visible = false
+z_index = 1
+
+[node name="EnemyManager" parent="." instance=ExtResource("4_45ahw")]
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(576, 576)
+
+[node name="UpgradeCaravanSpawn" type="Marker2D" parent="."]
+position = Vector2(576, -16)
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="GameLoopBackground" type="Sprite2D" parent="BackgroundLayer"]
+texture = ExtResource("5_5o5c6")
+
+[node name="LevelGUI" parent="BackgroundLayer/GameLoopBackground" instance=ExtResource("11_pvfh0")]
+offset_left = -240.0
+offset_top = -360.0
+offset_right = -240.0
+offset_bottom = -360.0
+
+[node name="GameTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="SoundHandler" parent="." instance=ExtResource("7_mhtgk")]

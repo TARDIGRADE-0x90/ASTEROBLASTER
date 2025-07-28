@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwfshjih4t1me"]
+
+[ext_resource type="PackedScene" uid="uid://ckx6lomu3vfde" path="res://GUI/UI_Controller/UI_Controller.tscn" id="1_laq1d"]
+[ext_resource type="PackedScene" uid="uid://b6re03qepgedf" path="res://GUI/PauseMenu/PauseMenu.tscn" id="2_w14tn"]
+[ext_resource type="PackedScene" uid="uid://xn2pokl2bokb" path="res://GUI/UpgradeMenu/UpgradeMenu.tscn" id="3_anjft"]
+
+[node name="UITest2" type="Node"]
+
+[node name="UI_Controller" parent="." instance=ExtResource("1_laq1d")]
+
+[node name="PauseMenu" parent="UI_Controller" instance=ExtResource("2_w14tn")]
+visible = false
+
+[node name="UpgradeMenu" parent="UI_Controller" instance=ExtResource("3_anjft")]
